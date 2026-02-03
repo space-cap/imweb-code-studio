@@ -4,8 +4,11 @@ import { useState } from 'react';
 import Editor from './components/Editor';
 import Preview from './components/Preview';
 import TemplateManager from './components/TemplateManager';
+import TabNavigation from './components/TabNavigation';
+import TemplateGallery from './components/TemplateGallery';
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState<'gallery' | 'editor' | 'my-templates'>('gallery');
   const [code, setCode] = useState(`<div class="dc-flex dc-items-center dc-justify-center dc-h-64 dc-bg-gradient-to-r dc-from-blue-500 dc-to-purple-600 dc-rounded-lg dc-shadow-xl">
   <div class="dc-text-center dc-text-white">
     <h1 class="dc-text-4xl dc-font-bold dc-mb-4">
@@ -41,17 +44,41 @@ export default function Home() {
     setCode(newCode);
   };
 
+  const handleLoadTemplate = (templateCode: string) => {
+    setCode(templateCode);
+    setActiveTab('editor'); // 템플릿 로드 시 에디터 탭으로 전환
+  };
+
   return (
     <div className="app-container">
-      <TemplateManager currentCode={code} onLoadTemplate={setCode} />
-      <div className="split-layout">
-        <div className="editor-panel">
-          <Editor code={code} onChange={handleCodeChange} />
+      <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
+
+      {/* 갤러리 탭 */}
+      {activeTab === 'gallery' && (
+        <div className="tab-content">
+          <TemplateGallery onSelectTemplate={handleLoadTemplate} />
         </div>
-        <div className="preview-panel">
-          <Preview code={code} />
+      )}
+
+      {/* 에디터 탭 */}
+      {activeTab === 'editor' && (
+        <div className="split-layout">
+          <div className="editor-panel">
+            <Editor code={code} onChange={handleCodeChange} />
+          </div>
+          <div className="preview-panel">
+            <Preview code={code} />
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* 내 템플릿 탭 */}
+      {activeTab === 'my-templates' && (
+        <div className="tab-content">
+          <TemplateManager currentCode={code} onLoadTemplate={handleLoadTemplate} />
+        </div>
+      )}
+
       <style jsx>{`
         .app-container {
           width: 100vw;
@@ -59,6 +86,40 @@ export default function Home() {
           overflow: hidden;
           display: flex;
           flex-direction: column;
+        }
+
+        .tab-content {
+          flex: 1;
+          overflow: auto;
+          background-color: #1e1e1e;
+        }
+
+        .placeholder {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          color: #d4d4d4;
+          text-align: center;
+          padding: 40px;
+        }
+
+        .placeholder h2 {
+          font-size: 32px;
+          margin-bottom: 16px;
+        }
+
+        .placeholder p {
+          font-size: 18px;
+          color: #9ca3af;
+          margin-bottom: 8px;
+        }
+
+        .coming-soon {
+          font-size: 14px;
+          color: #6b7280;
+          font-style: italic;
         }
 
         .split-layout {
