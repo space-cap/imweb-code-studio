@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Editor from './components/Editor';
 import Preview from './components/Preview';
+import TemplateManager from './components/TemplateManager';
 
 export default function Home() {
   const [code, setCode] = useState(`<div class="dc-flex dc-items-center dc-justify-center dc-h-64 dc-bg-gradient-to-r dc-from-blue-500 dc-to-purple-600 dc-rounded-lg dc-shadow-xl">
@@ -42,6 +43,7 @@ export default function Home() {
 
   return (
     <div className="app-container">
+      <TemplateManager currentCode={code} onLoadTemplate={setCode} />
       <div className="split-layout">
         <div className="editor-panel">
           <Editor code={code} onChange={handleCodeChange} />
@@ -55,13 +57,16 @@ export default function Home() {
           width: 100vw;
           height: 100vh;
           overflow: hidden;
+          display: flex;
+          flex-direction: column;
         }
 
         .split-layout {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          height: 100%;
+          flex: 1;
           width: 100%;
+          overflow: hidden;
         }
 
         .editor-panel,

@@ -6,90 +6,132 @@ Next.js 14 기반의 실시간 HTML/Tailwind 코드 에디터 & 프리뷰 시스
 
 ---
 
-## Phase 1: 프로젝트 초기화 및 설정
+## ✅ Phase 1: 프로젝트 초기화 및 설정 (완료)
 
 ### 1.1 프로젝트 생성
-- [ ] Next.js 14 프로젝트 초기화 (App Router, TypeScript)
-- [ ] 기본 폴더 구조 생성
-- [ ] Git 초기화 및 .gitignore 설정
+- [x] Next.js 14 프로젝트 초기화 (App Router, TypeScript)
+- [x] 기본 폴더 구조 생성 (`app/`, `components/`, `utils/`)
+- [x] Git 초기화 및 .gitignore 설정
 
 ### 1.2 Tailwind CSS 설정
-- [ ] `layout.tsx`에 Tailwind CDN 스크립트 주입
-- [ ] Tailwind config 설정 (`prefix: 'dc-'`, `preflight: false`)
-- [ ] 기본 스타일 테스트
+- [x] `layout.tsx`에 Tailwind CDN 스크립트 주입
+- [x] Tailwind config 설정 (`prefix: 'dc-'`, `preflight: false`)
+- [x] 기본 스타일 테스트
 
 ### 1.3 개발 환경 설정
-- [ ] ESLint 및 Prettier 설정
-- [ ] TypeScript 설정 확인
-- [ ] 개발 서버 실행 테스트
+- [x] ESLint 및 Prettier 설정
+- [x] TypeScript 설정 확인
+- [x] 개발 서버 실행 테스트
 
 ---
 
-## Phase 2: 핵심 UI 구현
+## ✅ Phase 2: 핵심 UI 구현 (완료)
 
 ### 2.1 레이아웃 구조
-- [ ] `page.tsx`에 스플릿 레이아웃 구현 (Grid 사용)
-- [ ] 반응형 레이아웃 설정 (모바일: 상하, 데스크톱: 좌우)
-- [ ] 툴바 영역 추가
+- [x] `page.tsx`에 스플릿 레이아웃 구현 (Grid 사용)
+- [x] 반응형 레이아웃 설정 (모바일: 상하, 데스크톱: 좌우)
+- [x] 툴바 영역 추가 (Phase 5로 이동)
 
 ### 2.2 코드 에디터 컴포넌트
-- [ ] `components/Editor.tsx` 생성
-- [ ] Textarea 기반 에디터 구현
-- [ ] 다크 테마 스타일링 적용
+- [x] `components/Editor.tsx` 생성
+- [x] Textarea 기반 에디터 구현
+- [x] 다크 테마 스타일링 적용
   - 배경색: `#1e1e1e`
   - 텍스트: `#d4d4d4`
-  - 폰트: Fira Code 또는 JetBrains Mono
-- [ ] 라인 넘버 표시 (선택적)
-- [ ] 코드 하이라이팅 (선택적)
+  - 폰트: Fira Code (Google Fonts)
+- [x] 커스텀 스크롤바 스타일
+- [ ] 라인 넘버 표시 (선택적, Phase 8)
+- [ ] 코드 하이라이팅 (선택적, Phase 8)
 
 ### 2.3 프리뷰 컴포넌트
-- [ ] `components/Preview.tsx` 생성
-- [ ] 흰색 배경 스타일 적용
-- [ ] `dangerouslySetInnerHTML`로 HTML 렌더링
-- [ ] Tailwind `dc-` prefix 동작 확인
+- [x] `components/Preview.tsx` 생성
+- [x] 흰색 배경 스타일 적용
+- [x] `dangerouslySetInnerHTML`로 HTML 렌더링
+- [x] Tailwind `dc-` prefix 동작 확인
 
 ---
 
-## Phase 3: 실시간 동기화 기능
+## ✅ Phase 3: 실시간 동기화 기능 (완료)
 
 ### 3.1 상태 관리
-- [ ] `useState`로 코드 상태 관리
-- [ ] Editor → Preview 데이터 플로우 구현
-- [ ] 실시간 업데이트 테스트
+- [x] `useState`로 코드 상태 관리
+- [x] Editor → Preview 데이터 플로우 구현
+- [x] 실시간 업데이트 테스트
 
-### 3.2 성능 최적화
-- [ ] Debounce 적용 (과도한 렌더링 방지)
-- [ ] useCallback/useMemo 최적화 (필요 시)
+### 3.2 성능 최적화 (선택적)
+- [ ] Debounce 적용 (과도한 렌더링 방지) - 필요 시 추가
+- [ ] useCallback/useMemo 최적화 (필요 시) - 필요 시 추가
 
 ---
 
-## Phase 4: 템플릿 관리 시스템
+## ✅ Phase 4: 템플릿 관리 시스템 (완료)
 
 ### 4.1 localStorage 유틸리티
-- [ ] `utils/storage.ts` 생성
-- [ ] 템플릿 저장 함수 구현
-- [ ] 템플릿 로드 함수 구현
-- [ ] 템플릿 삭제 함수 구현
-- [ ] 템플릿 목록 조회 함수 구현
+- [x] `utils/storage.ts` 생성
+- [x] 템플릿 저장 함수 구현
+- [x] 템플릿 로드 함수 구현
+- [x] 템플릿 삭제 함수 구현
+- [x] 템플릿 목록 조회 함수 구현
+- [x] 보너스: import/export 기능 추가
 
 ### 4.2 템플릿 저장 UI
-- [ ] `components/TemplateManager.tsx` 생성
-- [ ] "Save Template" 버튼 추가
-- [ ] 저장 모달 구현
+- [x] `components/TemplateManager.tsx` 생성
+- [x] "💾 저장" 버튼 추가
+- [x] 저장 모달 구현
   - 템플릿 이름 입력 필드
   - 저장/취소 버튼
-- [ ] localStorage에 저장 로직 연결
+- [x] localStorage에 저장 로직 연결
 
 ### 4.3 템플릿 로드 UI
-- [ ] "Load Template" 버튼 추가
-- [ ] 템플릿 목록 모달/드롭다운 구현
-- [ ] 템플릿 선택 시 에디터에 로드
-- [ ] 빈 템플릿 목록 처리 (안내 메시지)
+- [x] "📂 불러오기" 버튼 추가
+- [x] 템플릿 목록 모달 구현
+- [x] 템플릿 선택 시 에디터에 로드
+- [x] 빈 템플릿 목록 처리 (안내 메시지)
 
 ### 4.4 템플릿 삭제 UI
-- [ ] 템플릿 목록에 삭제 버튼 추가
-- [ ] 확인 다이얼로그 구현
-- [ ] 삭제 후 목록 갱신
+- [x] 템플릿 목록에 삭제 버튼 추가
+- [x] 확인 다이얼로그 구현
+- [x] 삭제 후 목록 갱신
+
+---
+
+## 🔄 Phase 4.5: 갤러리 모드 추가 (다음 작업)
+
+> **목표**: 초보자를 위한 템플릿 갤러리 및 고급 사용자를 위한 에디터 모드 제공
+
+### 4.5.1 탭 네비게이션
+- [ ] `components/TabNavigation.tsx` 생성
+- [ ] 3개 탭 구현: 🏠 갤러리 | ✏️ 에디터 | 💾 내 템플릿
+- [ ] 탭 전환 상태 관리
+
+### 4.5.2 템플릿 갤러리 컴포넌트
+- [ ] `components/TemplateGallery.tsx` 생성
+- [ ] 카드 그리드 레이아웃 구현
+- [ ] 카테고리별 필터링 (Hero, Card, Form, etc.)
+- [ ] 검색 기능
+
+### 4.5.3 미리 제공할 템플릿 데이터
+- [ ] `data/prebuilt-templates.ts` 생성
+- [ ] Hero Sections (5-10개)
+- [ ] Card Components (5-10개)
+- [ ] Navigation Bars (3-5개)
+- [ ] Footers (3-5개)
+- [ ] Forms (3-5개)
+- [ ] Buttons (5-10개)
+- [ ] 기타 유용한 컴포넌트
+
+### 4.5.4 템플릿 상세 모달
+- [ ] `components/TemplateDetailModal.tsx` 생성
+- [ ] 프리뷰 영역
+- [ ] 코드 표시 (syntax highlighting)
+- [ ] 복사 버튼
+- [ ] "에디터로 열기" 버튼
+
+### 4.5.5 UI/UX 개선
+- [ ] 썸네일 이미지 생성 또는 스크린샷
+- [ ] 로딩 상태 처리
+- [ ] 애니메이션 효과
+- [ ] 반응형 그리드
 
 ---
 
@@ -216,11 +258,11 @@ Next.js 14 기반의 실시간 HTML/Tailwind 코드 에디터 & 프리뷰 시스
 ## ✅ 완료 체크리스트
 
 ### MVP 완료 기준
-- [ ] 코드 에디터에서 HTML/Tailwind 코드 작성 가능
-- [ ] 프리뷰 영역에서 실시간 렌더링 확인
-- [ ] Tailwind `dc-` prefix 정상 동작
-- [ ] 템플릿 저장/로드/삭제 기능 동작
-- [ ] 모바일/데스크톱 반응형 지원
+- [x] 코드 에디터에서 HTML/Tailwind 코드 작성 가능
+- [x] 프리뷰 영역에서 실시간 렌더링 확인
+- [x] Tailwind `dc-` prefix 정상 동작
+- [ ] 템플릿 저장/로드/삭제 기능 동작 (Phase 4)
+- [x] 모바일/데스크톱 반응형 지원
 
 ### 품질 기준
 - [ ] TypeScript 에러 없음
